@@ -13,10 +13,13 @@ public class PlayerMovementS : MonoBehaviour
     public LayerMask idleRoots;
     public bool holding;
     public GameObject theInHand;
+
+    Animator terranceAnimation;
     // Start is called before the first frame update
     void Start()
     {
         movePoint.parent = null;
+        terranceAnimation = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,7 @@ public class PlayerMovementS : MonoBehaviour
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
+                TerranceAnim(Input.GetAxisRaw("Horizontal"));
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
                     .2f, obstacles)){
                     
@@ -116,6 +120,18 @@ public class PlayerMovementS : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "LevelEnter"){
             SceneManager.LoadScene(1);
+        }
+    }
+
+    private void TerranceAnim(float direction){
+        if(direction > 0.0f){
+            terranceAnimation.ResetTrigger("Left");
+            terranceAnimation.ResetTrigger("Right");
+        }
+
+        if(direction < 0.0f){
+            terranceAnimation.ResetTrigger("Right");
+            terranceAnimation.ResetTrigger("Left");
         }
     }
 }
