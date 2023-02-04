@@ -29,7 +29,12 @@ public class Root : MonoBehaviour
 
     public void putDown()
     {
-        rootTiles.SetTile(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0), newRoot);
+        rootTiles.SetTile(new Vector3Int((int)transform.position.x - 1, (int)transform.position.y - 1, 0), newRoot);
+    }
+
+    public void suckUp()
+    {
+        rootTiles.SetTile(new Vector3Int((int)transform.position.x - 1, (int)transform.position.y - 1, 0), null);
     }
 
     // Update is called once per frame
