@@ -8,6 +8,9 @@ public class PlayerMovementS : MonoBehaviour
     public Transform movePoint;
 
     public LayerMask obstacles;
+    public LayerMask roots;
+    public bool holding;
+    public GameObject theInHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,15 @@ public class PlayerMovementS : MonoBehaviour
                 }
                 
             }
+            else if (Physics2D.OverlapCircle(gameObject.transform.position, .2f, roots) && !holding)
+            {
+                if (Input.GetButton("Fire1"))
+                {
+                    theInHand = Physics2D.OverlapCircle(gameObject.transform.position, .2f, roots).gameObject;
+                    theInHand.GetComponent<Root>().pickUp();
+                }
+            }
         }
+        
     }
 }
