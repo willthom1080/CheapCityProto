@@ -13,12 +13,10 @@ public class PlayerMovementS : MonoBehaviour
     public LayerMask idleRoots;
     public bool holding;
     public GameObject theInHand;
-    public Stack<Vector3> moves;
     // Start is called before the first frame update
     void Start()
     {
         movePoint.parent = null;
-        moves = new Stack<Vector3>();
     }
 
     // Update is called once per frame
@@ -36,9 +34,9 @@ public class PlayerMovementS : MonoBehaviour
                        .2f, idleRoots))
                     {
                         
-                        if(holding && movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) == moves.Peek())
+                        if(holding && movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) == theInHand.GetComponent<Root>().moves.Peek())
                         {
-                            moves.Pop();
+                            theInHand.GetComponent<Root>().moves.Pop();
                             theInHand.GetComponent<Root>().putDown(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0));
                             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
                         }
@@ -49,7 +47,7 @@ public class PlayerMovementS : MonoBehaviour
                     {
                         
                         Vector3 oldPosition = movePoint.position;
-                        moves.Push(oldPosition);
+                        theInHand.GetComponent<Root>().moves.Push(oldPosition);
                         theInHand.GetComponent<Root>().putDown(oldPosition);
                         movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
                     }
@@ -70,9 +68,9 @@ public class PlayerMovementS : MonoBehaviour
                        .2f, idleRoots))
                     {
                         
-                        if (holding && movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0) == moves.Peek())
+                        if (holding && movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0) == theInHand.GetComponent<Root>().moves.Peek())
                         {
-                            moves.Pop();
+                            theInHand.GetComponent<Root>().moves.Pop();
                             theInHand.GetComponent<Root>().putDown(movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0));
                             movePoint.position += new Vector3(0,Input.GetAxisRaw("Vertical"),0);
                         }
@@ -83,7 +81,7 @@ public class PlayerMovementS : MonoBehaviour
                     {
                         
                         Vector3 oldPosition = movePoint.position;
-                        moves.Push(oldPosition);
+                        theInHand.GetComponent<Root>().moves.Push(oldPosition);
                         theInHand.GetComponent<Root>().putDown(oldPosition);
                         movePoint.position += new Vector3(0,Input.GetAxisRaw("Vertical"),0);
                     }

@@ -8,11 +8,16 @@ public class Root : MonoBehaviour
     // Start is called before the first frame update
     public bool isEnd;
     public bool inHand;
-    public GameObject stemRoot;
     public GameObject player;
     public Tilemap rootTiles;
     public Tile newRoot;
+    public int desire; //1 for water, 2 for minerals, 3 for fungi
+    public Stack<Vector3> moves;
 
+    private void Start()
+    {
+        moves = new Stack<Vector3>();
+    }
     public void pickUp()
     {
         if (!inHand)
@@ -47,7 +52,6 @@ public class Root : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, gameObject.transform.position, 
-            player.GetComponent<PlayerMovementS>().moveSpeed * Time.deltaTime);
+       
     }
 }
