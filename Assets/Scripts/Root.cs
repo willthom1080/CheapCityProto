@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Root : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Root : MonoBehaviour
     public bool inHand;
     public GameObject stemRoot;
     public GameObject player;
+    public Tilemap rootTiles;
+    public Tile newRoot;
 
     public void pickUp()
     {
@@ -22,6 +25,11 @@ public class Root : MonoBehaviour
             inHand = false;
             gameObject.transform.parent = null;
         }
+    }
+
+    public void putDown()
+    {
+        rootTiles.SetTile(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0), newRoot);
     }
 
     // Update is called once per frame
