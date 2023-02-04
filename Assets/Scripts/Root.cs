@@ -27,14 +27,21 @@ public class Root : MonoBehaviour
         }
     }
 
-    public void putDown()
+    public void putDown(Vector3 input)
     {
-        rootTiles.SetTile(new Vector3Int((int)transform.position.x - 1, (int)transform.position.y - 1, 0), newRoot);
+        if (rootTiles.HasTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0)))
+        {
+            suckUp(input);
+        }
+        else
+        {
+            rootTiles.SetTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0), newRoot);
+        }
     }
 
-    public void suckUp()
+    public void suckUp(Vector3 input)
     {
-        rootTiles.SetTile(new Vector3Int((int)transform.position.x - 1, (int)transform.position.y - 1, 0), null);
+        rootTiles.SetTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0), null);
     }
 
     // Update is called once per frame
