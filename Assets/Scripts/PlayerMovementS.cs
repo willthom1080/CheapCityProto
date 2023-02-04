@@ -45,6 +45,7 @@ public class PlayerMovementS : MonoBehaviour
             {
                 if (Input.GetButton("Fire1"))
                 {
+                    
                     theInHand = Physics2D.OverlapCircle(gameObject.transform.position, .2f, roots).gameObject;
                     theInHand.GetComponent<Root>().pickUp();
                 }
