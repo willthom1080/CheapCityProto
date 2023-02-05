@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Hole Test.unity
-    guid: 4b263a6be255f0745a587934ddb0681d
+    path: Assets/Scenes/Main Menu.unity
+    guid: 75f3e9e752137e743b05bf049c302ec4
   - enabled: 1
-    path: Assets/Scenes/Testing.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Level 1.unity
+    guid: 4b4a8c5879d1bc44494c43d114558c5f
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 5a72475a1068e8d4e9a5b7b0f3be3b7f
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 6c7f1b8df8913a840a14a277389fe5de
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: 580472e11bd25014684ab2b9b7216b79
   m_configObjects: {}

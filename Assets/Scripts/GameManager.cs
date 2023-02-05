@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     GameObject[] rootContainer;
-    bool victory;
+    public bool victory;
     void Start()
     {
        rootContainer = GameObject.FindGameObjectsWithTag("Root");
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         if (victory)
         {
             Debug.Log("You win");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
     }
 

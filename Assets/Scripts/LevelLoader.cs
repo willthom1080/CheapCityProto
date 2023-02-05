@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
+    public GameObject GameManager;
     public Animator transition;
     public float transitionTime = 1f;
-    public bool touching = false;
+    public int nextLevel;
 
-    public void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Player"){
-            print("touching");
-            StartCoroutine(LoadLevel(1));
+
+    void Update()
+    {
+        if (GameManager.GetComponent<GameManager>().victory)
+        {
+            StartCoroutine(LoadLevel(nextLevel));
         }
     }
 
