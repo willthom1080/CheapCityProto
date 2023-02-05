@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public void StartGame() => SceneManager.LoadScene("Opening Cutscene");
+    public void StartGame() => SceneManager.LoadScene(1);
 
     public void QuitGame()
     {
