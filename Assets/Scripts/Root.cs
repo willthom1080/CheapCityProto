@@ -39,12 +39,12 @@ public class Root : MonoBehaviour
     {
         if (rootTiles.HasTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0)))
         {
-            Debug.Log("Thinks it's there" + input);
+            
             suckUp(input);
         }
         else
         {
-            Debug.Log("Knows it ain't");
+            
             rootTiles.SetTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0), newRoot);
         }
     }
