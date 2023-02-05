@@ -35,11 +35,13 @@ public class PlayerMovementS : MonoBehaviour
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
                     .2f, obstacles)){
                     
+                    
                     if(Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
-                       .2f, idleRoots))
+                       .2f, idleRoots) || holding && theInHand.GetComponent<Root>().satisfied)
                     {
                         
-                        if(holding && movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) == theInHand.GetComponent<Root>().moves.Peek())
+                        if(holding && movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) 
+                            == theInHand.GetComponent<Root>().moves.Peek())
                         {
                             theInHand.GetComponent<Root>().moves.Pop();
                             theInHand.GetComponent<Root>().putDown(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0));
@@ -48,7 +50,8 @@ public class PlayerMovementS : MonoBehaviour
                     }
                     
 
-                    else if (holding)
+                    else if (holding && !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
+                       .2f, roots))
                     {
                         
                         Vector3 oldPosition = movePoint.position;
@@ -56,7 +59,7 @@ public class PlayerMovementS : MonoBehaviour
                         theInHand.GetComponent<Root>().putDown(oldPosition);
                         movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
                     }
-                    else
+                    else if(!holding)
                     { 
                         movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
                     }
@@ -70,10 +73,11 @@ public class PlayerMovementS : MonoBehaviour
                 {
 
                     if (Physics2D.OverlapCircle(movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0),
-                       .2f, idleRoots))
+                       .2f, idleRoots) || holding && theInHand.GetComponent<Root>().satisfied)
                     {
                         
-                        if (holding && movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0) == theInHand.GetComponent<Root>().moves.Peek())
+                        if (holding && theInHand.GetComponent<Root>().moves.Count > 0 && movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0) 
+                            == theInHand.GetComponent<Root>().moves.Peek())
                         {
                             theInHand.GetComponent<Root>().moves.Pop();
                             theInHand.GetComponent<Root>().putDown(movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0));
@@ -82,7 +86,8 @@ public class PlayerMovementS : MonoBehaviour
                     }
 
 
-                    else if (holding)
+                    else if (holding && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0),
+                       .2f, roots))
                     {
                         
                         Vector3 oldPosition = movePoint.position;
@@ -90,7 +95,7 @@ public class PlayerMovementS : MonoBehaviour
                         theInHand.GetComponent<Root>().putDown(oldPosition);
                         movePoint.position += new Vector3(0,Input.GetAxisRaw("Vertical"),0);
                     }
-                    else
+                    else if (!(holding))
                     {
                         movePoint.position += new Vector3(0,Input.GetAxisRaw("Vertical"),0);
                     }
@@ -102,6 +107,7 @@ public class PlayerMovementS : MonoBehaviour
                 if (Input.GetButtonDown("Fire1"))
                 {
                     holding = true;
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     theInHand = Physics2D.OverlapCircle(gameObject.transform.position, .2f, roots).gameObject;
                     theInHand.GetComponent<Root>().pickUp();
                 }
@@ -111,6 +117,7 @@ public class PlayerMovementS : MonoBehaviour
                 if (Input.GetButtonDown("Fire1"))
                 {
                     holding = false;
+                    gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     theInHand.GetComponent<Root>().pickUp();
                 }
             }
