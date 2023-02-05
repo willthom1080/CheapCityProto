@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LevelEnter
   - Root
+  - DialogueTrigger
   layers:
   - Default
   - TransparentFX
