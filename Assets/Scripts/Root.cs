@@ -18,6 +18,7 @@ public class Root : MonoBehaviour
     private void Start()
     {
         moves = new Stack<Vector3>();
+        
     }
     public void pickUp()
     {
@@ -31,6 +32,7 @@ public class Root : MonoBehaviour
             inHand = false;
             gameObject.transform.parent = null;
         }
+        
     }
 
     public void putDown(Vector3 input)
