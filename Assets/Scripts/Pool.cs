@@ -27,6 +27,7 @@ public class Pool : MonoBehaviour
                 player.theInHand.GetComponent<Root>().pickUp();
                 collision.gameObject.transform.position = transform.position;
                 player.theInHand.GetComponent<Root>().satisfied = true;
+                collision.gameObject.GetComponent<Root>().putDown(gameObject.transform.position);
                 theManager.GetComponent<GameManager>().checkDone();
             }
         }
@@ -38,6 +39,7 @@ public class Pool : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Root>().desire == resType)
             {
+                collision.gameObject.GetComponent<Root>().suckUp(gameObject.transform.position);
                 
                 player.theInHand.GetComponent<Root>().satisfied = false;
                 

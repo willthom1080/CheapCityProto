@@ -21,6 +21,7 @@ public class PlayerMovementS : MonoBehaviour
     void Start()
     {
         movePoint.parent = null;
+
     }
 
     // Update is called once per frame
@@ -45,6 +46,10 @@ public class PlayerMovementS : MonoBehaviour
                         {
                             theInHand.GetComponent<Root>().moves.Pop();
                             theInHand.GetComponent<Root>().putDown(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0));
+                            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                        }
+                        if (!holding)
+                        {
                             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
                         }
                     }
@@ -83,6 +88,10 @@ public class PlayerMovementS : MonoBehaviour
                             theInHand.GetComponent<Root>().putDown(movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0));
                             movePoint.position += new Vector3(0,Input.GetAxisRaw("Vertical"),0);
                         }
+                        if (!holding)
+                        {
+                            movePoint.position += new Vector3(0, Input.GetAxisRaw("Vertical"), 0);
+                        }
                     }
 
 
@@ -109,6 +118,7 @@ public class PlayerMovementS : MonoBehaviour
                     holding = true;
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     theInHand = Physics2D.OverlapCircle(gameObject.transform.position, .2f, roots).gameObject;
+                    theInHand.GetComponent<Root>().putDown(transform.position);
                     theInHand.GetComponent<Root>().pickUp();
                 }
             }
@@ -118,7 +128,10 @@ public class PlayerMovementS : MonoBehaviour
                 {
                     holding = false;
                     gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    theInHand.GetComponent<Root>().putDown(transform.position);
                     theInHand.GetComponent<Root>().pickUp();
+                    theInHand = null;
+                    
                 }
             }
         }
