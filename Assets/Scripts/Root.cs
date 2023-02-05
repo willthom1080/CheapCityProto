@@ -35,6 +35,15 @@ public class Root : MonoBehaviour
         
     }
 
+    public void safePutDown(Vector3 input)
+    {
+        
+        if (rootTiles.HasTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0)))
+        {
+
+            suckUp(input);
+        }
+    }
     public void putDown(Vector3 input)
     {
         if (rootTiles.HasTile(new Vector3Int((int)input.x - 1, (int)input.y - 1, 0)))
