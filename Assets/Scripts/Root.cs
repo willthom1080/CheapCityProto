@@ -10,7 +10,7 @@ public class Root : MonoBehaviour
     public bool inHand;
     public GameObject player;
     public Tilemap rootTiles;
-    public Tile newRoot;
+    public RuleTile newRoot;
     public int desire; //1 for water, 2 for minerals, 3 for fungi
     public bool satisfied;
     public Stack<Vector3> moves;

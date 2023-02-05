@@ -1178,6 +1178,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1780039483}
     - target: {fileID: 5533702268460643581, guid: 628390ce62fdb8e4d9feaa8aac213af8, type: 3}
+      propertyPath: newRoot
+      value: 
+      objectReference: {fileID: 11400000, guid: 105166a6bbaac124798f5ec780ea559c, type: 2}
+    - target: {fileID: 5533702268460643581, guid: 628390ce62fdb8e4d9feaa8aac213af8, type: 3}
       propertyPath: rootTiles
       value: 
       objectReference: {fileID: 1811733253}
