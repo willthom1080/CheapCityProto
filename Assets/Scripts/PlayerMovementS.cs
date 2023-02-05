@@ -38,7 +38,7 @@ public class PlayerMovementS : MonoBehaviour
                     
                     
                     if(Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
-                       .2f, idleRoots) || holding && theInHand.GetComponent<Root>().satisfied)
+                       .2f, idleRoots) || (holding && theInHand.GetComponent<Root>().satisfied))
                     {
                         
                         if(holding && movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) 
@@ -78,7 +78,7 @@ public class PlayerMovementS : MonoBehaviour
                 {
 
                     if (Physics2D.OverlapCircle(movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0),
-                       .2f, idleRoots) || holding && theInHand.GetComponent<Root>().satisfied)
+                       .2f, idleRoots) || (holding && theInHand.GetComponent<Root>().satisfied))
                     {
                         
                         if (holding && theInHand.GetComponent<Root>().moves.Count > 0 && movePoint.position + new Vector3(0,Input.GetAxisRaw("Vertical"),0) 
