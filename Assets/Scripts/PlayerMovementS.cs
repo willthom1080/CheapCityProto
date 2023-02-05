@@ -14,6 +14,9 @@ public class PlayerMovementS : MonoBehaviour
     public bool holding;
     public GameObject theInHand;
     public bool facingRight = true;
+
+    public Animator transition;
+    public float transitionTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -115,10 +118,17 @@ public class PlayerMovementS : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    public void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "LevelEnter"){
-            SceneManager.LoadScene(1);
+            print("touching");
+            StartCoroutine(LoadLevel(1));
         }
+    }
+
+    IEnumerator LoadLevel(int level){
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(level);
     }
 
     private void TerranceAnim(float direction){
