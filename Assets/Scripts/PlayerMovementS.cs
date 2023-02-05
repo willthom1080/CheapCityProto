@@ -58,7 +58,7 @@ public class PlayerMovementS : MonoBehaviour
                     else if (holding && !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
                        .2f, roots))
                     {
-                        
+                        Debug.Log("Old Pos: " + movePoint.position);
                         Vector3 oldPosition = movePoint.position;
                         theInHand.GetComponent<Root>().moves.Push(oldPosition);
                         theInHand.GetComponent<Root>().putDown(oldPosition);
@@ -118,7 +118,7 @@ public class PlayerMovementS : MonoBehaviour
                     holding = true;
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     theInHand = Physics2D.OverlapCircle(gameObject.transform.position, .2f, roots).gameObject;
-                    theInHand.GetComponent<Root>().putDown(transform.position);
+                    //theInHand.GetComponent<Root>().putDown(transform.position);
                     theInHand.GetComponent<Root>().pickUp();
                 }
             }
@@ -128,7 +128,7 @@ public class PlayerMovementS : MonoBehaviour
                 {
                     holding = false;
                     gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    theInHand.GetComponent<Root>().putDown(transform.position);
+                    //theInHand.GetComponent<Root>().putDown(transform.position);
                     theInHand.GetComponent<Root>().pickUp();
                     theInHand = null;
                     
