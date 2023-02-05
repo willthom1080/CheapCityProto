@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8815494910106462893}
   - component: {fileID: 8815494910106462894}
   - component: {fileID: 8815494910106462895}
-  - component: {fileID: 5491588693215917063}
+  - component: {fileID: 1230593264}
   m_Layer: 0
   m_Name: Terrance
   m_TagString: Player
@@ -112,7 +112,8 @@ MonoBehaviour:
     m_Bits: 0
   holding: 0
   theInHand: {fileID: 0}
---- !u!95 &5491588693215917063
+  facingRight: 1
+--- !u!95 &1230593264
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

@@ -13,13 +13,11 @@ public class PlayerMovementS : MonoBehaviour
     public LayerMask idleRoots;
     public bool holding;
     public GameObject theInHand;
-
-    Animator terranceAnimation;
+    public bool facingRight = true;
     // Start is called before the first frame update
     void Start()
     {
         movePoint.parent = null;
-        terranceAnimation = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -124,14 +122,14 @@ public class PlayerMovementS : MonoBehaviour
     }
 
     private void TerranceAnim(float direction){
-        if(direction > 0.0f){
-            terranceAnimation.ResetTrigger("Left");
-            terranceAnimation.ResetTrigger("Right");
+        if(direction > 0.0 && !facingRight){
+            transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+            facingRight = true;
         }
 
-        if(direction < 0.0f){
-            terranceAnimation.ResetTrigger("Right");
-            terranceAnimation.ResetTrigger("Left");
+        if(direction < 0.0f && facingRight){
+            transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+            facingRight = false;
         }
     }
 }
