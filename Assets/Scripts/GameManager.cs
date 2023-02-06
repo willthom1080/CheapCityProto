@@ -20,14 +20,7 @@ public class GameManager : MonoBehaviour
         if (victory)
         {
             Debug.Log("You win");
-            if(SceneManager.GetActiveScene().buildIndex == 2)
-            {
-                SceneManager.LoadScene(0);
-            } 
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            FindObjectOfType<LevelLoader>().ChangeLevels(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
