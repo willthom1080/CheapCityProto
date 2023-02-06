@@ -669,6 +669,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6014309704420700800, guid: c5411768e987204459bd147f2b747a9d, type: 3}
+      propertyPath: rootTileMap
+      value: 
+      objectReference: {fileID: 619515614}
     - target: {fileID: 6014309704420700802, guid: c5411768e987204459bd147f2b747a9d, type: 3}
       propertyPath: m_Name
       value: GameManager

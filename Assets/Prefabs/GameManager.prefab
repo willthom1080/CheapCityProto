@@ -44,3 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3392de0b6b99e7a4490b3a0a5adb8b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilesContainer:
+  - {fileID: 11400000, guid: c25416c0bd01b7948860ba828b40893a, type: 2}
+  - {fileID: 11400000, guid: 1756e4e440583fd4c9e0c0874ea2ef0f, type: 2}
+  - {fileID: 11400000, guid: f3f88a09051f1b34ea84a6561bb8ac1b, type: 2}
+  - {fileID: 11400000, guid: 66df1f2b66fef464e9b07a8536fffc5e, type: 2}
+  - {fileID: 11400000, guid: e79d1642e387f9a45ac2f4da5ce08049, type: 2}
+  - {fileID: 11400000, guid: d7534618eba86d349ae1c7a862d4154b, type: 2}
+  - {fileID: 11400000, guid: dad0d6f59eca6484fa2920d69d92ff0b, type: 2}
+  - {fileID: 11400000, guid: ba9371c87371c784b968059a808a9eeb, type: 2}
+  rootTileMap: {fileID: 0}
+  victory: 0
