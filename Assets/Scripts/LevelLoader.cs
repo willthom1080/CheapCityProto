@@ -15,11 +15,15 @@ public class LevelLoader : MonoBehaviour
     {
         if (GameManager.GetComponent<GameManager>().victory)
         {
-            StartCoroutine(LoadLevel(nextLevel));
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }
 
-    IEnumerator LoadLevel(int level){
+    public void ChangeLevels(int level){
+        StartCoroutine(LoadLevel(level));
+    }
+
+    public IEnumerator LoadLevel(int level){
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(level);

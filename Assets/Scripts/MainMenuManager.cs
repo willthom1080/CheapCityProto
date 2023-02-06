@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public void StartGame() => SceneManager.LoadScene(1);
+    public void StartGame()
+    {
+        FindObjectOfType<LevelLoader>().ChangeLevels(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
     public void QuitGame()
     {

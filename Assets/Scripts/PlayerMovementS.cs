@@ -138,19 +138,6 @@ public class PlayerMovementS : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "LevelEnter"){
-            print("touching");
-            StartCoroutine(LoadLevel(1));
-        }
-    }
-
-    IEnumerator LoadLevel(int level){
-        transition.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(level);
-    }
-
     private void TerranceAnim(float direction){
         if(direction > 0.0 && !facingRight){
             transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
