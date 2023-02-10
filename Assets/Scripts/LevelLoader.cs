@@ -8,7 +8,6 @@ public class LevelLoader : MonoBehaviour
     public GameObject GameManager;
     public Animator transition;
     public float transitionTime = 1f;
-    public int nextLevel;
 
 
     void Update()
