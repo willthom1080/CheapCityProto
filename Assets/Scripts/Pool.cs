@@ -6,7 +6,7 @@ public class Pool : MonoBehaviour
 {
     public int resType;
     public PlayerMovementS player;
-    GameObject theManager;
+    public GameObject theManager;
     // Start is called before the first frame update
     void Start()
     {
