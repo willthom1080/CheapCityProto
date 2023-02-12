@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     {
         if (victory)
         {
-            Debug.Log("You win");
             FindObjectOfType<LevelLoader>().ChangeLevels(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

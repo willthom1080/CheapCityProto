@@ -9,17 +9,12 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-
-    void Update()
-    {
-        if (GameManager.GetComponent<GameManager>().victory)
-        {
-            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-        }
-    }
-
     public void ChangeLevels(int level){
+        if(level == 6){
+            StartCoroutine(LoadLevel(0));
+        } else{
         StartCoroutine(LoadLevel(level));
+        }
     }
 
     public IEnumerator LoadLevel(int level){
