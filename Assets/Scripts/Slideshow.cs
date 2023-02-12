@@ -17,8 +17,8 @@ public class Slideshow : MonoBehaviour
             }
             else {
                 this.gameObject.transform.GetChild(3).SetSiblingIndex(0);
+                currentSlide++;
             }
-            currentSlide++;
         }
     }
 }
