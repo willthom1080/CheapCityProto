@@ -38,6 +38,10 @@ public class Root : MonoBehaviour
             {
                 moves.Push(transform.position);
             }
+            if (!rootTiles.HasTile(new Vector3Int((int)transform.position.x - 1, (int)transform.position.y - 1, 0)))
+            {
+                rootTiles.SetTile(Vector3Int.FloorToInt(transform.position), newRoots[0]);
+            }
         }
         else
         {
@@ -47,15 +51,17 @@ public class Root : MonoBehaviour
         
     }
 
-    public void thinkTrail()
+    public void thinkTrail(Vector3 destination)
     {
-        if (rootTiles.HasTile(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0)))
+        if (rootTiles.HasTile(new Vector3Int((int)destination.x-1, (int)destination.y-1, 0)))
         {
-            //Turn back into "head" of root
+            rootTiles.SetTile(new Vector3Int((int)destination.x - 1, (int)destination.y - 1, 0), null);
+            moves.Pop();
         }
         else
         {
             putTrail();
+            moves.Push(transform.position);
         }
     }
 
@@ -72,16 +78,16 @@ public class Root : MonoBehaviour
             bool verticalOrig = ((temp.x - moves.Peek().x) == 0);
             if(verticalDest == verticalOrig)//Straight line root being placed
             {
-                rootTiles.SetTile(new Vector3Int((int)temp.x, (int)temp.y, 0), newRoots[1]);
+                rootTiles.SetTile(new Vector3Int((int)temp.x-1, (int)temp.y-1, 0), newRoots[1]);
             }
             else//Curved root being placed
             {
-                rootTiles.SetTile(new Vector3Int((int)temp.x, (int)temp.y, 0), newRoots[2]);
+                rootTiles.SetTile(new Vector3Int((int)temp.x-1, (int)temp.y-1, 0), newRoots[2]);
             }
             moves.Push(temp);
 
         }
-        rootTiles.SetTile(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0), newRoots[0]);
+        rootTiles.SetTile(new Vector3Int((int)transform.position.x - 1, (int)transform.position.y - 1, 0), newRoots[0]);
     }
 
     public void safePutDown(Vector3 input)

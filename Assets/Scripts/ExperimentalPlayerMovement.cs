@@ -94,32 +94,22 @@ public class ExperimentalPlayerMovement : MonoBehaviour
 
     private void moveMe(Vector3 dest)
     {
-        if (Physics2D.OverlapCircle(dest, .2f, idleRoots) || (holding && theInHand.GetComponent<Root>().satisfied))
+        if (holding)
         {
-
-            if (holding)
+            if (!Physics2D.OverlapCircle(dest,.2f, idleRoots) || 
+                (Physics2D.OverlapCircle(dest, .2f, idleRoots).transform.position == theInHand.GetComponent<Root>().moves.Peek()))
             {
-                theInHand.GetComponent<Root>().thinkTrail();
-                movePoint.position = dest;
-            }
-            if (!holding)
-            {
-                movePoint.position = dest;
+                if (holding && theInHand.GetComponent<Root>().rootTiles.HasTile(Vector3Int.FloorToInt(transform.position)))
+                {
+                    theInHand.GetComponent<Root>().thinkTrail(dest);
+                    movePoint.position = dest;
+                }
+                
             }
         }
-
-
-        else if (holding && !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0),
-           .2f, roots))
+        if (!holding)
         {
-            Vector3 oldPosition = movePoint.position;
-            theInHand.GetComponent<Root>().moves.Push(oldPosition);
-            theInHand.GetComponent<Root>().putDown(oldPosition);
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
-        }
-        else if (!holding)
-        {
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                movePoint.position = dest;
         }
     }
 }
