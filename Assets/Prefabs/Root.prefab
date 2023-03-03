@@ -130,6 +130,10 @@ MonoBehaviour:
   inHand: 0
   player: {fileID: 0}
   rootTiles: {fileID: 0}
-  newRoot: {fileID: 11400000, guid: a6a6402e017fd2e4c9e1336147c6d14d, type: 2}
+  newRoot: {fileID: 0}
+  newRoots:
+  - {fileID: 11400000, guid: fcfc3a1a0d525d8479c4fd856a63a4e2, type: 2}
+  - {fileID: 11400000, guid: aa045685975b33d46a153ab173fb033f, type: 2}
+  - {fileID: 11400000, guid: 03ab50d11e9a55e4687e6306cb94238b, type: 2}
   desire: 0
   satisfied: 0
